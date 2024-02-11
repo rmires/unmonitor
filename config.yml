@@ -1,0 +1,23 @@
+app:
+  sonarr: true
+  radarr: true
+  health_check: 'https://hc-ping.com/<id>'
+
+radarr:
+  host: 'http://<host>:7878/<base>'
+  api_key: ''
+
+sonarr:
+  host: 'http://<host>:8989/<base>'
+  api_key: ''
+
+emby:
+  host: 'http://<host>:8096'
+  api_key: ''
+  user_name: ''
+
+log:
+  level: 'INFO'
+  filename: '/config/unmonitor.log'
+  format: '%(asctime)s - %(message)s'
+
