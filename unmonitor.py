@@ -1,7 +1,6 @@
 import yaml
 import requests
 import logging
-from urllib.parse import urljoin
 
 class ApiRequester(object):
     def __init__(self, host, headers):
@@ -10,7 +9,7 @@ class ApiRequester(object):
         self.logger = logging.getLogger(__name__)
 
     def get(self, endpoint, **kwargs):
-        url = urljoin(self.host, endpoint)
+        url = f"{self.host}{endpoint}"
         self.logger.debug(f"get url: {url}")
         self.logger.debug(f"get params: {kwargs}")
         response = requests.get(url, headers=self.headers, params=kwargs)
@@ -20,9 +19,9 @@ class ApiRequester(object):
         return data
 
     def put(self, endpoint, payload):
-        url = urljoin(self.host, endpoint)
+        url = f"{self.host}{endpoint}"
         self.logger.debug(f"put url: {url}")
-        self.logger.debug(f"put paylod: {payload}")
+        self.logger.debug(f"put payload: {payload}")
         response = requests.put(url, headers=self.headers, json=payload)
         response.raise_for_status()
 
